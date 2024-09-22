@@ -7,12 +7,12 @@ function Navbar({}: Props) {
     <div className=" w-full h-16 border-b-2 flex flex-row justify-center">
       <div className="w-full max-w-[1440px] flex flex-col  justify-center">
         <h1 className="font-bold mx-auto">Cryptoid</h1>
-        <div className=" flex flex-row w-1/2 justify-between">
+        <div className=" flex flex-row w-full relative justify-between">
           <Link to={"/account"}>
-            <AccountButton name="" />
+            <AccountButton name="Minhal Ali Khan" />
           </Link>
           <Link to={"/walletmanager"}>
-            <WallettButton />
+            <WallettButton name="Wallet 1" logo="" />
           </Link>
         </div>
       </div>
@@ -26,17 +26,22 @@ type AccountButtonProps = { name: string };
 
 function AccountButton({ name = "" }: AccountButtonProps) {
   let Initials: string | string[] = name.split(" ");
-  Initials = Initials[0] + Initials[Initials.length - 1];
-
+  Initials = Initials[0][0] + Initials[Initials.length - 1][0];
+  console.log(Initials);
   return (
-    <div className="w-12 rounded-full bg-red-900 text-red-500">
+    <div className="w-8 h-8 flex justify-center items-center font- text-sm rounded-full bg-red-900 text-red-500">
       <p>{Initials}</p>
     </div>
   );
 }
 
-type WalletButtonProps = {};
+type WalletButtonProps = { name: string; logo: string };
 
-function WallettButton({}: WalletButtonProps) {
-  return <div></div>;
+function WallettButton({ name = "", logo = "" }: WalletButtonProps) {
+  return (
+    <div className="rounded-lg px-4 py-1 border-slate-100 bg-slate-800 text-white">
+      {logo && <img src={logo} />}
+      <p>{name}</p>
+    </div>
+  );
 }
