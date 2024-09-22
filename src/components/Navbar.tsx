@@ -9,7 +9,7 @@ function Navbar({}: Props) {
         <h1 className="font-bold mx-auto">Cryptoid</h1>
         <div className=" flex flex-row w-1/2 justify-between">
           <Link to={"/account"}>
-            <AccountButton />
+            <AccountButton name="" />
           </Link>
           <Link to={"/walletmanager"}>
             <WallettButton />
@@ -24,8 +24,15 @@ export default Navbar;
 
 type AccountButtonProps = { name: string };
 
-function AccountButton({}: AccountButtonProps) {
-  return <div className="w-12 rounded-full bg-red-900 text-red-500"></div>;
+function AccountButton({ name = "" }: AccountButtonProps) {
+  let Initials: string | string[] = name.split(" ");
+  Initials = Initials[0] + Initials[Initials.length - 1];
+
+  return (
+    <div className="w-12 rounded-full bg-red-900 text-red-500">
+      <p>{Initials}</p>
+    </div>
+  );
 }
 
 type WalletButtonProps = {};
