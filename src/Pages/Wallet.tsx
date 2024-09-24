@@ -4,7 +4,7 @@ import Solana from '../assets/solana.svg'
 type Props = {};
 
 function Wallet({ }: Props) {
-  const Transactions = [1, 2, 3, 4, 5, 6]
+  const Transactions = [1, 2, 3, 4, 5, 6, 8, 7, 42, 1, 45, 3, 53,]
   return (
     <div className="flex flex-col w-full h-full z-0">
       <Navbar />
@@ -31,7 +31,7 @@ function Wallet({ }: Props) {
                       <p className="font-bold text-xl text-white">Ethereum </p>
                       <p className="font-medium text-lg text-gray-500">{ item } ETH</p>
                     </div>
-                    <div className="flex w-[50px] h-full flex-col justify-center">
+                    <div className="flex w-[90px] h-full flex-col justify-center">
                       <p className="font-bold text-xl text-white">$0.00</p>
                       <p className="font-medium text-lg text-red-500">-0.24%</p>
                     </div>

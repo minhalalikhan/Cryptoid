@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaAngleDown } from "react-icons/fa";
 import { FaClipboard } from "react-icons/fa";
 import Solana from "../assets/solana.svg";
+import NameLogo from "./NameLogo";
 
 type Props = {};
 
@@ -12,14 +13,14 @@ function Navbar({ }: Props) {
         <h1 className="font-bold mx-auto text-white p-2">Cryptoid</h1>
         <div className=" flex flex-row w-full relative justify-center">
           <Link to={ "/account" }>
-            <AccountButton name="Minhal Ali Khan" />
+            {/* <AccountButton name="Minhal Ali Khan" /> */ }
+            <NameLogo name="Minhal Ali Khan" className="absolute left-0 top-0" />
           </Link>
-          <Link to={ "/walletmanager" }>
-            <WallettButton name="Wallet 1" logo={ Solana } />
-          </Link>
+
+          <WallettButton name="Wallet 1" logo={ Solana } />
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 
@@ -32,7 +33,7 @@ function AccountButton({ name = "" }: AccountButtonProps) {
   Initials = Initials[0][0] + Initials[Initials.length - 1][0];
   console.log(Initials);
   return (
-    <div className="w-12 h-12 flex justify-center items-center font- text-sm rounded-full bg-red-950 text-red-500 absolute left-0 top-0">
+    <div className={ `w-12 h-12 flex justify-center items-center font- text-sm rounded-full bg-red-950 text-red-500 absolute left-0 top-0` }>
       <p>{ Initials }</p>
     </div>
   );
@@ -41,12 +42,16 @@ function AccountButton({ name = "" }: AccountButtonProps) {
 type WalletButtonProps = { name: string; logo: string };
 
 function WallettButton({ name = "", logo = "" }: WalletButtonProps) {
+
+  const Navigate = useNavigate()
   return (
-    <div className="rounded-lg  border-slate-500 border bg-[#202127]  text-white flex flex-row">
+    <div className="rounded-lg  border-slate-500 border bg-[#202127]  text-white flex flex-row cursor-pointer">
       <div className="rounded-l-lg p-2  min-w-[50px] hover:bg-gray-900 flex justify-center items-center">
         { logo && <img style={ { width: "20px" } } src={ logo } /> }
       </div>
-      <div className="min-w-[100px] p-2 hover:bg-gray-900 border-x border-collapse  border-slate-500  flex justify-center items-center">
+      <div
+        onClick={ () => Navigate('/walletmanager') }
+        className="min-w-[100px] p-2 hover:bg-gray-900 border-x border-collapse  border-slate-500  flex justify-center items-center">
         <p className="flex-1">{ name }</p>
         <FaAngleDown className="text-gray-500" />
       </div>
