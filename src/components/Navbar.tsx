@@ -26,18 +26,18 @@ function Navbar({ }: Props) {
 
 export default Navbar;
 
-type AccountButtonProps = { name: string };
+// type AccountButtonProps = { name: string };
 
-function AccountButton({ name = "" }: AccountButtonProps) {
-  let Initials: string | string[] = name.split(" ");
-  Initials = Initials[0][0] + Initials[Initials.length - 1][0];
-  console.log(Initials);
-  return (
-    <div className={ `w-12 h-12 flex justify-center items-center font- text-sm rounded-full bg-red-950 text-red-500 absolute left-0 top-0` }>
-      <p>{ Initials }</p>
-    </div>
-  );
-}
+// function AccountButton({ name = "" }: AccountButtonProps) {
+//   let Initials: string | string[] = name.split(" ");
+//   Initials = Initials[0][0] + Initials[Initials.length - 1][0];
+//   console.log(Initials);
+//   return (
+//     <div className={ `w-12 h-12 flex justify-center items-center font- text-sm rounded-full bg-red-950 text-red-500 absolute left-0 top-0` }>
+//       <p>{ Initials }</p>
+//     </div>
+//   );
+// }
 
 type WalletButtonProps = { name: string; logo: string };
 
