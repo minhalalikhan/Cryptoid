@@ -1,9 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
 import { IoMenu } from "react-icons/io5";
 import { FaClipboard } from "react-icons/fa";
 import TokenLogo from "../components/TokenLogo";
 import { WalletInfo } from "../Types/Types";
+import CustomRouteLink from "./CustomRouteLink";
+import { useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
 
 type Props = {};
 
@@ -56,19 +59,30 @@ const DummyWallets: WalletInfo[] = [{
 }]
 
 function WalletManager({ }: Props) {
+
+  const location = useLocation();
+  const navigate = useNavigate()
+  useEffect(() => {
+    navigate(location.pathname, { state: { Background: location } })
+  }, [])
+
   return (
     <div className="flex flex-col w-full h-full text-white  z-0 bg-primary">
       <div className="flex flex-row p-4 h-[90px]">
 
-        <Link to={ "/" }><IoClose className="text-gray-400 text-xl" /></Link>
+        <Link to={ "/" } ><IoClose className="text-gray-400 text-xl" /></Link>
         <h3 className="text-center flex-1"> Wallets</h3>
       </div>
       {/* Create New Wallet */ }
       <div className="flex flex-col gap-2 w-full py-4 px-[5%] h-[60px]">
-        <p className="font-medium text-orange-400 text-lg cursor-pointer">+ Create New Wallet</p>
+
+        <CustomRouteLink path="/createwallet" >
+          <p className="font-medium text-orange-400 text-lg cursor-pointer">+ Create New Wallet</p>
+
+        </CustomRouteLink>
       </div>
       {/* List of Wallets */ }
-      <div className="flex flex-col gap-3 w-full items-center flex-1 overflow-y-auto">
+      <div className="flex flex-col gap-3 w-full items-center flex-1 overflow-y-auto"      >
         { DummyWallets.map((item, i) => {
           return (
             <Wallet info={ item } key={ i } />

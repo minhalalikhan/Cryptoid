@@ -47,7 +47,9 @@ function WallettButton({ name = "", logo = "" }: WalletButtonProps) {
   return (
     <div className="rounded-lg  border-slate-500 border bg-[#202127]  text-white flex flex-row cursor-pointer">
       <div className="rounded-l-lg p-2  min-w-[50px] hover:bg-gray-900 flex justify-center items-center">
-        { logo && <img style={ { width: "20px" } } src={ logo } /> }
+        { logo && <img
+
+          style={ { width: "20px" } } src={ logo } /> }
       </div>
       <div
         onClick={ () => Navigate('/walletmanager') }
