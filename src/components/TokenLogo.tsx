@@ -31,7 +31,7 @@ function TokenLogo({ token, className = '', }: Props) {
 
 
     return (
-        <img className={ `${className}` }
+        <img className={ `w-5 ${className}` }
             style={ {} }
             src={ getImage(token) } />
     )

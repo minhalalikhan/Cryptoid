@@ -23,7 +23,9 @@ function CustomRouteLink({ children, path }: Props) {
         )
 
     return (
-        <Link className="cursor-pointer " to={ path } state={ { Background: location.state?.Background || location } } onClick={ () => { console.log('custom route :', location) } }>
+        <Link className="cursor-pointer " to={ path }
+            state={ { Background: location.state?.Background || location }
+            } onClick={ () => { console.log('custom route :', location) } }>
             { children }
         </Link>
     )

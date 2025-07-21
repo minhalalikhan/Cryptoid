@@ -85,7 +85,6 @@ function App() {
 
         {/* </Route> */ }
         <Route path="/walletmanager" element={
-
           <motion.div
             initial="initial"
             animate="in"
@@ -102,26 +101,14 @@ function App() {
               zIndex: 10, // Ensure it's above HomePage
             } }
           >
-
             <WalletManager />
           </motion.div>
-
         } >
-
-
           <Route path="*" element={ <></> } />
-
         </Route>
 
-        {/* <Route path="/createwallet"
-          // key={ location.pathname }
-          element={
-            <NestedMotionDiv KEY="createwallet" >
-              <CreateWallet />
-            </NestedMotionDiv>
-          } /> */}
-        {/* <Route path='*' element={ <></> } /> */ }
       </Routes>
+
       <Routes location={ location } key={ "=" + location.pathname }>
 
         <Route path="/createwallet"
